@@ -1,0 +1,97 @@
+{
+  "name": "react-user-guide",
+  "version": "1.0.2",
+  "description": "React User Guide",
+  "author": "sandeshshrestha",
+  "license": "MIT",
+  "repository": "sandeshshrestha/react-user-guide",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "postbuild": "yarn scss",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "scss": "scss src/custom-style.scss:dist/custom-style.css",
+    "scsswatch": "scss -w src/custom-style.scss:dist/custom-style.css",
+    "prepare": "yarn build",
+    "predeploy": "cd example && yarn install && yarn build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "peerDependencies": {
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "^15.5.4",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "@svgr/rollup": "^2.4.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.4",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-watch": "^5.0.1",
+    "node-sass": "^4.11.0",
+    "gh-pages": "^1.2.0",
+    "lodash.debounce": "^4.0.8",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4",
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-scss": "^1.0.1",
+    "rollup-plugin-url": "^1.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:react/recommended"
+    ],
+    "plugins": [
+      "react"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jquery": true,
+      "jest": true
+    },
+    "globals": {}
+  },
+  "dependencies": {
+  }
+}
