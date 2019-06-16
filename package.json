@@ -1,6 +1,6 @@
 {
   "name": "react-user-guide",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React User Guide",
   "author": "sandeshshrestha",
   "license": "MIT",
@@ -45,9 +45,9 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-react": "^7.12.4",
     "eslint-watch": "^5.0.1",
-    "node-sass": "^4.11.0",
     "gh-pages": "^1.2.0",
     "lodash.debounce": "^4.0.8",
+    "node-sass": "^4.11.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
@@ -92,6 +92,5 @@
     },
     "globals": {}
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
