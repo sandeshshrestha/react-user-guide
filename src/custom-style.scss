@@ -23,10 +23,6 @@
     font-weight: normal;
   }
 
-  p {
-
-  }
-
   button {
     @include button();
     background-color: #5a6268;
@@ -38,23 +34,10 @@
   }
 }
 
-// Style mask
-.userGuide--mask {
-
-}
-
 // Style tooltip
 .userGuide--message {
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
-
-  h3 {
-
-  }
-
-  p {
-
-  }
 
   button {
     @include button();
