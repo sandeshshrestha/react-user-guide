@@ -124,6 +124,9 @@ export default class App extends Component {
 * position *[string]* - *(east|west|north|south)* - position of tooltip from target element (default = 'north')
 * tooltipWidth *[int]* - width of tooltip (default = 240)
 
+## DEMO
+https://sandeshshrestha.github.io/react-user-guide/
+
 ## Screenshots
 
 [Click here if images didn't load](https://github.com/sandeshshrestha/React-User-Guide#screenshots)
