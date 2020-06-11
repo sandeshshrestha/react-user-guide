@@ -9,8 +9,8 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=12",
+    "npm": ">=6"
   },
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
@@ -18,46 +18,49 @@
     "postbuild": "yarn scss",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "scss": "scss src/custom-style.scss:dist/custom-style.css",
-    "scsswatch": "scss -w src/custom-style.scss:dist/custom-style.css",
+    "scss": "sass src/custom-style.scss:dist/custom-style.css",
+    "scsswatch": "sass -w src/custom-style.scss:dist/custom-style.css",
     "predeploy": "cd example && yarn install && yarn build",
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "lodash": "^4.17.15",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
   },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  },
   "devDependencies": {
-    "@svgr/rollup": "^4.3.2",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "10.0.2",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.2.1",
-    "eslint": "^6.3.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-external-helpers": "^7.10.1",
+    "@babel/plugin-proposal-function-bind": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@rollup/plugin-babel": "^5.0.3",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.1",
+    "@rollup/plugin-url": "^5.0.1",
+    "@svgr/rollup": "^5.4.0",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-react": "^1.1.7",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-watch": "^6.0.0",
-    "gh-pages": "^2.1.1",
-    "lodash": "^4.17.15",
-    "node-sass": "^4.12.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "^3.1.1",
-    "rollup": "^1.20.3",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-scss": "^1.0.2",
-    "rollup-plugin-url": "^2.2.2"
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-watch": "^7.0.0",
+    "gh-pages": "^3.0.0",
+    "lodash.debounce": "^4.0.8",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "rollup": "^2.15.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-postcss": "^3.1.2",
+    "rollup-plugin-scss": "^2.5.0"
   },
   "files": [
     "dist"
@@ -90,6 +93,5 @@
       "jest": true
     },
     "globals": {}
-  },
-  "dependencies": {}
+  }
 }

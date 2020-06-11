@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
