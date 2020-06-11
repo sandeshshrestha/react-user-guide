@@ -9,6 +9,14 @@ const style = {
   padding: 5
 };
 
+const buttonConfig = {
+  yesText: 'Yes',
+  noText: 'No',
+  nextText: 'Next',
+  skipText: 'Skip',
+  finishText: 'Finish'
+};
+
 const guides = [
   {
     querySelector: '.unique-classname',
@@ -40,7 +48,7 @@ const guides = [
 export default class App extends Component {
   render () {
     return (
-      <UserGuide guides={guides}>
+      <UserGuide buttonConfig={buttonConfig} guides={guides}>
         <div style={style} className="unique-classname">Target element</div>
       </UserGuide>
     )

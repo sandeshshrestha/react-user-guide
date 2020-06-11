@@ -27,6 +27,14 @@ const applyStyle = (el, style = {}) => {
   return dom;
 };
 
+const defaultButtonConfig = {
+  yesText: 'Yes',
+  noText: 'No',
+  nextText: 'Next',
+  skipText: 'Skip',
+  finishText: 'Finish'
+};
+
 class HelpText extends Component {
   static propTypes = {
     querySelector: PropTypes.string,
@@ -34,6 +42,9 @@ class HelpText extends Component {
     title: PropTypes.string,
     message: PropTypes.string,
     position: PropTypes.string, // east, west, north, south
+    nextText: PropTypes.string.isRequired,
+    skipText: PropTypes.string.isRequired,
+    finishText: PropTypes.string.isRequired,
     onNext: PropTypes.func,
     onSkip: PropTypes.func,
     isLast: PropTypes.bool.isRequired,
@@ -83,12 +94,15 @@ class HelpText extends Component {
       position,
       tooltipWidth,
       isLast,
+      nextText,
+      skipText,
+      finishText,
     } = this.props;
 
     const node = createElement('span', `userGuide--message ${styles.userGuideMessage} ${styles[`userGuideMessage${position}`]}`, '');
     const titleEl = createElement('h3', styles.userGuideMessageTitle, title);
     const messageEl = createElement('p', styles.userGuideMessageBody, message);
-    const nextButton = createElement('button', isLast ? 'finish' : 'next', isLast ? 'Finish' : 'Next');
+    const nextButton = createElement('button', isLast ? 'finish' : 'next', isLast ? finishText : nextText);
 
     nextButton.addEventListener('click', onNext);
 
@@ -96,7 +110,7 @@ class HelpText extends Component {
     node.appendChild(messageEl);
 
     if (!isLast) {
-      const skipButton = createElement('button', 'skip', 'Skip');
+      const skipButton = createElement('button', 'skip', skipText);
 
       skipButton.addEventListener('click', onSkip);
       node.appendChild(skipButton);
@@ -219,6 +233,13 @@ class UserGuide extends Component {
     content: PropTypes.string,
     guideKey: PropTypes.string.isRequired,
     guides: PropTypes.array.isRequired,
+    buttonConfig: PropTypes.shape({
+      yesText: PropTypes.string,
+      noText: PropTypes.string,
+      nextText: PropTypes.string,
+      skipText: PropTypes.string,
+      finishText: PropTypes.string,
+    }),
     children: PropTypes.oneOfType([
       PropTypes.array,
       PropTypes.element,
@@ -230,7 +251,8 @@ class UserGuide extends Component {
     guideKey: 'guideKey',
     guides: [],
     title: 'Quick Guide',
-    content: 'Would you like us to walk you through different features in this app?'
+    content: 'Would you like us to walk you through different features in this app?',
+    buttonConfig: defaultButtonConfig
   }
 
   constructor(props) {
@@ -271,6 +293,36 @@ class UserGuide extends Component {
     }
   }
 
+  getYesText() {
+    const { props: { buttonConfig: { yesText } } } = this;
+
+    return yesText || defaultButtonConfig.yesText;
+  }
+
+  getNoText() {
+    const { props: { buttonConfig: { noText } } } = this;
+
+    return noText || defaultButtonConfig.noText;
+  }
+
+  getNextText() {
+    const { props: { buttonConfig: { nextText } } } = this;
+
+    return nextText || defaultButtonConfig.nextText;
+  }
+
+  getSkipText() {
+    const { props: { buttonConfig: { skipText } } } = this;
+
+    return skipText || defaultButtonConfig.skipText;
+  }
+
+  getFinishText() {
+    const { props: { buttonConfig: { finishText } } } = this;
+
+    return finishText || defaultButtonConfig.finishText;
+  }
+
   acceptConfirm() {
     this.setState({
       acceptedConfirm: true
@@ -302,10 +354,10 @@ class UserGuide extends Component {
               <p>{content}</p>
               <div>
                 <button onClick={this.onSkip}>
-                  No
+                  {this.getNoText()}
                 </button>
                 <button onClick={this.acceptConfirm}>
-                  Yes
+                  {this.getYesText()}
                 </button>
               </div>
             </div>
@@ -315,7 +367,7 @@ class UserGuide extends Component {
     }
 
     return (
-      <HelpText {...helpConfig} onNext={this.onNext} onSkip={this.onSkip} isLast={isLast}>
+      <HelpText {...helpConfig} nextText={this.getNextText()} skipText={this.getSkipText()} finishText={this.getFinishText()} onNext={this.onNext} onSkip={this.onSkip} isLast={isLast}>
         {children || ''}
       </HelpText>
     );

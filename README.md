@@ -22,6 +22,14 @@ const style = {
   padding: 5
 };
 
+const buttonConfig = {
+  yesText: 'Yes',
+  noText: 'No',
+  nextText: 'Next',
+  skipText: 'Skip',
+  finishText: 'Finish'
+};
+
 const guides = [
   {
     querySelector: '.unique-classname',
@@ -53,7 +61,7 @@ const guides = [
 export default class App extends Component {
   render () {
     return (
-      <UserGuide guides={guides}>
+      <UserGuide buttonConfig={buttonConfig} guides={guides}>
         <div style={style} className="unique-classname">Target element</div>
       </UserGuide>
     )
@@ -115,6 +123,7 @@ export default class App extends Component {
 * guideKey *[string]* - unique key that will be used to store in localStorage (default = 'guideKey')
 * title *[string]* - Title used in Modal (default = 'Quick Guide')
 * content *[string]* - Content used in Modal (default = 'Would you like us to walk you through different features in this app?')
+* buttonConfig *[ButtonConfig]* - Text used by different buttons
 
 ### Guide
 
@@ -123,6 +132,14 @@ export default class App extends Component {
 * message *[string]* - message of tooltip
 * position *[string]* - *(east|west|north|south)* - position of tooltip from target element (default = 'north')
 * tooltipWidth *[int]* - width of tooltip (default = 240)
+
+### ButtonConfig
+
+* yesText *[string]* - Text for 'Yes' button
+* noText *[string]* - Text for 'No' button
+* nextText *[string]* - Text for 'Next' button
+* skipText *[string]* - Text for 'Skip' button
+* finishText *[string]* - Text for 'Finish' button
 
 ## DEMO
 https://sandeshshrestha.github.io/react-user-guide/
