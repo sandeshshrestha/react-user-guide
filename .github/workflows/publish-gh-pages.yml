@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: git remote -v
       - run: yarn
       - run: yarn remove eslint # Conflicts with Create React App so had to remove
+      - run: yarn test
       - run: yarn build
       - run: yarn predeploy
       - name: Deploy to GitHub Pages
