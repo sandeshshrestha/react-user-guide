@@ -1,0 +1,27 @@
+name: Deploy gh-pages
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: git remote -v
+      - run: yarn
+      - run: yarn remove eslint # Conflicts with Create React App so had to remove
+      - run: yarn build
+      - run: yarn predeploy
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@master
+        env:
+          EMAIL: mail@sandeshshrestha.com
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BUILD_DIR: example/build

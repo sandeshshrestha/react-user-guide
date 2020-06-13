@@ -18,8 +18,8 @@
     "postbuild": "yarn scss",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "scss": "sass src/custom-style.scss:dist/custom-style.css",
-    "scsswatch": "sass -w src/custom-style.scss:dist/custom-style.css",
+    "scss": "node-sass src/custom-style.scss dist/custom-style.css",
+    "scsswatch": "node-sass -w src/custom-style.scss dist/custom-style.css",
     "predeploy": "cd example && yarn install && yarn build",
     "deploy": "gh-pages -d example/build"
   },
