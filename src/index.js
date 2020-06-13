@@ -78,6 +78,7 @@ class HelpText extends Component {
   }
 
   componentWillUnmount() {
+    removeElement(this.mask);
     this.removeResizeListener();
   }
 
