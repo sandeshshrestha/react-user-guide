@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserGuide from 'react-user-guide';
 
 const style = {
@@ -45,12 +45,10 @@ const guides = [
   }
 ];
 
-export default class App extends Component {
-  render () {
-    return (
-      <UserGuide buttonConfig={buttonConfig} guides={guides}>
-        <div style={style} className="unique-classname">Target element</div>
-      </UserGuide>
-    )
-  }
-}
+const App = () => (
+  <UserGuide buttonConfig={buttonConfig} guides={guides}>
+    <div style={style} className="unique-classname">Target element</div>
+  </UserGuide>
+);
+
+export default App;
