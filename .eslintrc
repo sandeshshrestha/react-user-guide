@@ -100,7 +100,7 @@
     "no-undef": 2,
     "no-undef-init": 2,
     "no-undefined": 2,
-    "no-unused-vars": [2, { varsIgnorePattern: "React" }],
+    "no-unused-vars": [2, { "varsIgnorePattern": "React" }],
     "no-use-before-define": 2,
 
 
@@ -131,8 +131,8 @@
 
     "camelcase": 2,
     "comma-spacing": [2, {
-      before: false,
-      after: true
+      "before": false,
+      "after": true
     }],
 
     "comma-dangle": 0,
@@ -188,9 +188,9 @@
     "no-whitespace-before-property": 2,
     "object-curly-spacing": [2, "always"],
     "one-var": [2, {
-      let: "always",
-      var: "always",
-      const: "never"
+      "let": "always",
+      "var": "always",
+      "const": "never"
     }],
 
     "one-var-declaration-per-line": 2,
