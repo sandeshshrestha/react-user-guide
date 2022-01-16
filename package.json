@@ -1,6 +1,6 @@
 {
   "name": "react-user-guide",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "React User Guide",
   "author": "sandeshshrestha",
   "license": "MIT",
@@ -19,9 +19,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "scss": "node-sass src/custom-style.scss dist/custom-style.css",
-    "scsswatch": "node-sass -w src/custom-style.scss dist/custom-style.css",
-    "predeploy": "cd example && yarn install && yarn add react-user-guide && yarn build",
-    "deploy": "gh-pages -d example/build"
+    "scsswatch": "node-sass -w src/custom-style.scss dist/custom-style.css"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -48,7 +46,6 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-react": "^7.28.0",
     "eslint-watch": "^8.0.0",
-    "gh-pages": "^3.2.3",
     "lodash.debounce": "^4.0.8",
     "node-sass": "^7.0.1",
     "postcss": "^8.4.5",

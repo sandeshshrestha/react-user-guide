@@ -1,16 +1,11 @@
-name: Node.js Package
+name: Node.js Package and GH pages deploy
 
-# on:
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
 on:
   release:
     types: [created]
 
 jobs:
-  build:
+  build-deploy-npm-package-and-ghpage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,3 +18,13 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Clean parent
+        run: rm .eslintrc package.json
+      - name: Build gh-pages
+        run: cd example && yarn install && yarn add react-user-guide && yarn build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages
+          folder: example/build
+
