@@ -20,7 +20,7 @@
     "start": "rollup -c -w",
     "scss": "node-sass src/custom-style.scss dist/custom-style.css",
     "scsswatch": "node-sass -w src/custom-style.scss dist/custom-style.css",
-    "predeploy": "cd example && yarn install && yarn build",
+    "predeploy": "cd example && yarn install && yarn add react-user-guide && yarn build",
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
