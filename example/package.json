@@ -11,6 +11,10 @@
     "react-scripts": "^5.0.0",
     "react-user-guide": "link:.."
   },
+  "engines": {
+    "node": ">=14.17.0",
+    "npm": ">=8"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
